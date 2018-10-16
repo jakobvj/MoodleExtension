@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!--  This is the file that defines the actual layout and type of the commands.
+        It is divided in different sections (e.g. command definition, command
+        placement, ...), with each defining a specific set of properties.
+        See the comment before each section for more details about how to
+        use it. -->
+
+	<!--  The VSCT compiler (the tool that translates this file into the binary
+        format that VisualStudio will consume) has the ability to run a preprocessor
+        on the vsct file; this preprocessor is (usually) the C++ preprocessor, so
+        it is possible to define includes and macros with the same syntax used
+        in C++ files. Using this ability of the compiler here, we include some files
+        defining some of the constants that we will use inside the file. -->
+
+	<!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
+	<Extern href="stdidcmd.h" />
+
+	<!--This header contains the command ids for the menus provided by the shell. -->
+	<Extern href="vsshlids.h" />
+
+	<!--The Commands section is where commands, menus, and menu groups are defined.
+      This section uses a Guid to identify the package that provides the command defined inside it. -->
+	<Commands package="guidMoodleExtensionPackage">
+		<!-- Inside this section we have different sub-sections: one for the menus, another
+    for the menu groups, one for the buttons (the actual commands), one for the combos
+    and the last one for the bitmaps used. Each element is identified by a command id that
+    is a unique pair of guid and numeric identifier; the guid part of the identifier is usually
+    called "command set" and is used to group different command inside a logically related
+    group; your package should define its own command set in order to avoid collisions
+    with command ids defined by other packages. -->
+
+		<Menus>
+			<Menu guid="guidMoodleExtensionPackageCmdSet" id="TopLevelMenu" priority="0x700" type="Menu">
+				<Parent guid="guidSHLMainMenu" id="IDG_VS_MM_TOOLSADDINS" />
+				<Strings>
+					<ButtonText>TestMenu</ButtonText>
+					<CommandName>CodyDocs</CommandName>
+				</Strings>
+			</Menu>
+
+			<!--<Menu guid="guidMoodleExtensionPackageCmdSet2" id="SubMenu" priority="0x0100" type="Menu">
+				<Parent guid="guidMoodleExtensionPackageCmdSet2" id="MyMenuGroup"/>
+				<Strings>
+					<ButtonText>Sub Menu</ButtonText>
+					<CommandName>Sub Menu</CommandName>
+				</Strings>
+			</Menu>-->
+
+			<Menu guid="guidMoodleExtensionPackageCmdSet2" id="SubMenu" priority="0x0200" type="Menu">
+				<Parent guid="guidMoodleExtensionPackageCmdSet2" id="MyMenuGroup" />
+					<Strings>
+					<ButtonText>iLearn Extension</ButtonText>
+				</Strings>
+			</Menu>
+			
+		</Menus>
+		<!-- In this section you can define new menu groups. A menu group is a container for
+         other menus or buttons (commands); from a visual point of view you can see the
+         group as the part of a menu contained between two lines. The parent of a group
+         must be a menu. -->
+		<Groups>
+			<Group guid="guidMoodleExtensionPackageCmdSet" id="MyMenuGroup" priority="0x0600">
+				<Parent guid="guidMoodleExtensionPackageCmdSet" id="TopLevelMenu" />
+			</Group>
+			<Group guid="guidMoodleExtensionPackageCmdSet1" id="EditorContextMenuGroup" priority="0x0600">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
+			</Group>
+			<!--<Group guid="guidMoodleExtensionPackageCmdSet2" id="SubMenu" priority="0x0600">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
+			</Group>-->
+			<Group guid="guidMoodleExtensionPackageCmdSet2" id="MyMenuGroup" priority="0x0600">
+				<Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
+			</Group>
+
+			<Group guid="guidMoodleExtensionPackageCmdSet2" id="SubMenuGroup" priority="0x0602">
+				<Parent guid="guidMoodleExtensionPackageCmdSet2" id="SubMenu" />
+			</Group>
+			<!--<Group guid="guidMoodleExtensionPackageCmdSet2" id="SubMenuGroup" priority="0x0000">
+				<Parent guid="guidMoodleExtensionPackageCmdSet2" id="SubMenu"/>
+			</Group>-->
+		  <Group guid="guidMoodleExtensionPackageCmdSet3" id="MyMenuGroup" priority="0x0600">
+					
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+      </Group>
+    </Groups>
+
+		<!--Buttons section. -->
+		<!--This section defines the elements the user can interact with, like a menu command or a button
+        or combo box in a toolbar. -->
+		<Buttons>
+			<!--To define a menu group you have to specify its ID, the parent menu and its display priority.
+          The command is visible and enabled by default. If you need to change the visibility, status, etc, you can use
+          the CommandFlag node.
+          You can add more than one CommandFlag node e.g.:
+              <CommandFlag>DefaultInvisible</CommandFlag>
+              <CommandFlag>DynamicVisibility</CommandFlag>
+          If you do not want an image next to your command, remove the Icon node /> -->
+
+			<Button guid="guidMoodleExtensionPackageCmdSet" id="cmdidEnableDisableMoodleExtensionCommand" priority="0x0100" type="Button">
+				<Parent guid="guidMoodleExtensionPackageCmdSet" id="MyMenuGroup" />
+				<!--<Icon guid="guidImages" id="bmpPic" />-->
+				<Strings>
+					<ButtonText>Enable/Disable MoodleExtension</ButtonText>
+				</Strings>
+			</Button>
+			<Button guid="guidMoodleExtensionPackageCmdSet1" id="cmdidDocumentCodeCommand" priority="0x0100" type="Button">
+				<Parent guid="guidMoodleExtensionPackageCmdSet1" id="EditorContextMenuGroup" />
+				<!--<Icon guid="guidImages2" id="bmpPic1" />-->
+				<Strings>
+					<ButtonText>Invoke DocumentCodeCommand</ButtonText>
+				</Strings>
+			</Button>
+			
+			<!--<Button guid="guidMoodleExtensionPackageCmdSet2" id="cmdidCodeTagCommand" priority="0x0100" type="Button">
+				<Parent guid="guidMoodleExtensionPackageCmdSet2" id="SubMenu" />
+				<Icon guid="guidImages1" id="bmpPic1" />
+				<Strings>
+					<ButtonText>Invoke CodeTagCommand</ButtonText>
+				</Strings>
+			</Button>-->
+			<Button guid="guidMoodleExtensionPackageCmdSet2" id="cmdidCodeTagCommand" priority="0x0100" type="Button">
+				<Parent guid="guidMoodleExtensionPackageCmdSet2" id="SubMenuGroup" />
+				<Icon guid="GuidIconCodeTag" id="IconCodeTag" />
+				<Strings>
+					<ButtonText>Copy with code-tag</ButtonText>
+				</Strings>
+			</Button>
+		
+			<!--<Button guid="guidMoodleExtensionPackageCmdSet" id="cmdidTestSubCommand" priority="0x0000" type="Button">
+				<Parent guid="guidMoodleExtensionPackageCmdSet" id="MyMenuGroup" />
+				<Icon guid="guidImages" id="bmpPic2" />
+				<Strings>
+					<CommandName>cmdidTestSubCommand</CommandName>
+					<ButtonText>Test Sub Command</ButtonText>
+				</Strings>
+			</Button>-->
+
+		  <Button guid="guidMoodleExtensionPackageCmdSet2" id="cmdidGenericoTagCommand" priority="0x0105" type="Button">
+        <Parent guid="guidMoodleExtensionPackageCmdSet2" id="SubMenuGroup" />
+        <Icon guid="guidImages" id="IconGenericoTag" />
+        <Strings>
+          <ButtonText>Copy with Generico-tag</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidMoodleExtensionPackageCmdSet3" id="cmdidKbdCommand" priority="0x0100" type="Button">
+        <Parent guid="guidMoodleExtensionPackageCmdSet3" id="MyMenuGroup" />
+        <Icon guid="guidImages3" id="bmpPic1" />
+        <Strings>
+          <ButtonText>Invoke KbdCommand</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+		<!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
+		<Bitmaps>
+			<!--  The bitmap id is defined in a way that is a little bit different from the others:
+            the declaration starts with a guid for the bitmap strip, then there is the resource id of the
+            bitmap strip containing the bitmaps and then there are the numeric ids of the elements used
+            inside a button definition. An important aspect of this declaration is that the element id
+            must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
+			<!--<Bitmap guid="guidImages" href="Resources\Command1.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />-->
+			<Bitmap guid="guidImages1" href="Resources\CodeTagCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+			<Bitmap guid="GuidIconCodeTag" href="Resources\source-code.png" usedList="IconCodeTag" />
+		  <Bitmap guid="guidImages" href="Resources\generico.png" usedList="IconGenericoTag" />
+				<Bitmap guid="guidRightClick" href="Resources\MoodleIcon.png" usedList="IconMoodleExtension"/>
+      <Bitmap guid="guidImages3" href="Resources\KbdCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+    </Bitmaps>
+	</Commands>
+
+	<Symbols>
+		<!-- This is the package guid. -->
+		<GuidSymbol name="guidMoodleExtensionPackage" value="{ca202ab6-3b94-4f91-bb25-2d624a787312}" />
+		<GuidSymbol name="GuidIconCodeTag" value="{C874CFF2-8592-4E6A-8D9D-F1D459575495}">
+			<IDSymbol name="IconCodeTag" value="1" />
+		</GuidSymbol>
+			<GuidSymbol name="guidRightClick" value="{AC9D9EFA-C12F-41A6-8F66-C7BA69E36F1B}">
+					<IDSymbol name="IconMoodleExtension" value="1"/>
+			</GuidSymbol>
+		<GuidSymbol name="guidImages" value="{957F68E3-A292-4939-8035-7B6CC2406DDC}">
+			<IDSymbol name="IconGenericoTag" value="1" />
+		</GuidSymbol>
+		<!-- This is the guid used to group the menu commands together -->
+		<GuidSymbol name="guidMoodleExtensionPackageCmdSet" value="{9ee3b308-bcd7-4b67-8009-0276c2aee113}">
+			<IDSymbol name="MyMenuGroup" value="0x1020" />
+			<IDSymbol name="cmdidEnableDisableMoodleExtensionCommand" value="0x0100" />
+			<IDSymbol name="TopLevelMenu" value="0x1021" />
+
+			<IDSymbol name="SubMenu" value="0x1100" />
+			<IDSymbol name="SubMenuGroup" value="0x1150" />
+			<IDSymbol name="cmdidTestSubCommand" value="0x0105" />
+		</GuidSymbol>
+
+		<GuidSymbol name="guidImages" value="{bc5b87fd-5133-4c28-949b-2ef84a23dea2}">
+			<IDSymbol name="bmpPic1" value="1" />
+			<IDSymbol name="bmpPic2" value="2" />
+			<IDSymbol name="bmpPicSearch" value="3" />
+			<IDSymbol name="bmpPicX" value="4" />
+			<IDSymbol name="bmpPicArrows" value="5" />
+			<IDSymbol name="bmpPicStrikethrough" value="6" />
+		</GuidSymbol>
+
+		<GuidSymbol value="{451c2284-ff33-4178-9c5e-caf5c95d0ba9}" name="guidMoodleExtensionPackageCmdSet1">
+			<IDSymbol value="4128" name="EditorContextMenuGroup" />
+			<IDSymbol value="256" name="cmdidDocumentCodeCommand" />
+		</GuidSymbol>
+
+		<GuidSymbol value="{567f76ec-3322-4496-b909-0919d1d79131}" name="guidMoodleExtensionPackageCmdSet2">
+			<IDSymbol value="4128" name="MyMenuGroup" />
+			<IDSymbol value="256" name="cmdidCodeTagCommand" />
+			<IDSymbol value="512" name="cmdidGenericoTagCommand"/>
+			<!--<IDSymbol value="4128" name="EditorContextMenuGroup" />-->
+			<!--<IDSymbol value="0x1150" name="SubMenuGroup" />
+			<IDSymbol name="SubMenu" value="0x1100"/>-->
+
+			<IDSymbol name="SubMenu" value="0x1001" />
+			<IDSymbol name="SubMenuGroup" value="0x1000" />
+			<IDSymbol name="MyMenuGroup" value="0x1020" />
+			<IDSymbol name="cmdidMyCommand" value="0x0100" />
+			
+		</GuidSymbol>
+
+		<GuidSymbol value="{19010689-40ec-4a83-b3ee-9390d6f4ade8}" name="guidImages1">
+			<IDSymbol name="bmpPic1" value="1" />
+			<IDSymbol name="bmpPic2" value="2" />
+			<IDSymbol name="bmpPicSearch" value="3" />
+			<IDSymbol name="bmpPicX" value="4" />
+			<IDSymbol name="bmpPicArrows" value="5" />
+			<IDSymbol name="bmpPicStrikethrough" value="6" />
+		</GuidSymbol>
+	
+    <GuidSymbol value="{80a17bba-c907-4385-b432-5f2d6f15c6a5}" name="guidMoodleExtensionPackageCmdSet3">
+      <IDSymbol value="4128" name="MyMenuGroup" />
+      <!--<IDSymbol value="256" name="cmdidGenericoTagCommand" />-->
+      <IDSymbol value="256" name="cmdidKbdCommand" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{8af96fe8-1755-4253-992a-f4adcc1b0bae}" name="guidImages2">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{5d4ede32-5d50-4d89-97a3-ef1b27a9a1c5}" name="guidImages3">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

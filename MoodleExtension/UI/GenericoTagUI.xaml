@@ -1,0 +1,47 @@
+﻿<local:BaseDialogWindow
+            x:Class="MoodleExtension.UI.GenericoTagUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MoodleExtension.UI"
+             mc:Ignorable="d"
+             x:Name="This"
+             Width="313.444" Height="196.666" Background="#FF3E3E3E" ResizeMode="NoResize" Title="Select Generico" WindowStyle="ToolWindow" >
+
+    <Grid HorizontalAlignment="Left" Height="266" VerticalAlignment="Top" Margin="0,0,0,-106" Width="313">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="74.667"></ColumnDefinition>
+            <ColumnDefinition Width="74.667"></ColumnDefinition>
+            <ColumnDefinition Width="74.667"></ColumnDefinition>
+            <ColumnDefinition Width="75"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="27"></RowDefinition>
+            <RowDefinition Height="56"></RowDefinition>
+            <RowDefinition Height="Auto" MinHeight="28"></RowDefinition>
+            <RowDefinition MinHeight="2"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Column="0" Grid.Row="0" Source="../Resources/CSClassFile_16x.png" Margin="17,4,17.667,4" MouseDown="Csharp"/>
+        <Image Grid.Column="1" Grid.Row="0" Source="../Resources/HTMLFile_16x.png" Margin="17.333,4" MouseDown="Html"/>
+        <Image Grid.Column="2" Grid.Row="0" Source="../Resources/StyleSheet_16x.png" Margin="17.667,4,17,4" MouseDown="Css"/>
+
+        <Image Grid.Column="3" Grid.Row="0" Source="../Resources/JSONScript_16x.png" Margin="17,3,17.667,3" MouseDown="Json"/>
+        <Image Grid.Column="0" Grid.Row="2" Source="../Resources/JSScript_16x.png" Margin="17,3,17.667,3" MouseDown="Javascript"/>
+        <Image Grid.Column="3" Grid.Row="2" Source="../Resources/XMLFile_16x.png" Margin="17,3,17.667,3" MouseDown="Xml"/>
+        <Image Grid.Column="1" Grid.Row="2" Source="../Resources/TextFile_16x.png" Margin="17,3,17.667,3" MouseDown="Python"/>
+        <Image Grid.Column="2" Grid.Row="2" Margin="17,3,17.667,3" Source="../Resources/sqlfile.png" MouseDown="Sql"/>
+        <Label Grid.Column="0" Grid.Row="1" Foreground="LightGray" Content="C#" HorizontalContentAlignment="Center"/>
+        <Label Grid.Column="1" Grid.Row="1" Foreground="LightGray" Content="HTML" HorizontalContentAlignment="Center"/>
+        <Label Grid.Column="2" Grid.Row="1" Foreground="LightGray" Content="CSS" HorizontalContentAlignment="Center"/>
+        <Label Grid.Column="3" Grid.Row="1" Foreground="LightGray" Content="JSON" HorizontalContentAlignment="Center"/>
+        <Label Grid.Column="0" Grid.Row="3" Foreground="LightGray" Content="JAVASCRIPT" HorizontalContentAlignment="Center" />
+        <Label Grid.Column="1" Grid.Row="3" Foreground="LightGray" Content="PYTHON" HorizontalContentAlignment="Center" />
+        <Label Grid.Column="2" Grid.Row="3" Foreground="LightGray" Content="SQL" HorizontalContentAlignment="Center"/>
+        <Label Grid.Column="3" Grid.Row="3" Foreground="LightGray" Content="XML" HorizontalContentAlignment="Center"/>
+
+
+    </Grid>
+</local:BaseDialogWindow>
+
