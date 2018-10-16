@@ -84,6 +84,7 @@
     <Compile Include="Utils\Wrap.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".travis.yml" />
     <None Include="app.config" />
     <None Include="GeneralSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -94,6 +95,7 @@
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
+    <None Include="travis-build.sh" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\CSClassFile_16x.png" />

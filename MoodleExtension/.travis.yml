@@ -1,0 +1,5 @@
+﻿language: csharp
+solution: "./MoodleExtension.sln"
+
+script:
+  - xbuild ./MoodleExtension/MoodleExtension.sln
